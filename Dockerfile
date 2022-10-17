@@ -15,4 +15,4 @@ RUN pip install -r ./requirements.txt
 COPY flaskappdemo.py .
 
 # command to run on container when it starts
-CMD ["python", "./flaskappdemo.py"]
+CMD ["python", "./app.py"]
