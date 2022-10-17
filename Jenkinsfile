@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    environment {
-        DOCKERHUB_CREDS = credentials('docker-hub-cred')
-    }
 stages {
     stage('Clone Repo') {
         steps {
@@ -15,13 +12,9 @@ stages {
             sh 'docker build -t techcuriosity/jenkinstest:$BUILD_NUMBER .'
         }
     }
-    stage('Docker Login') {
+    stage('Docker Publish') {
         steps {
-            sh 'echo $DOCKERHUB_CREDS_PSW | docker login -u DOCKERHUB_CREDS_USR --password-stdin'
-        }
-    }
-    stage('Docker Push') {
-        steps {
+            withDockerRegistry([credentialsId: "", url: ""])
             sh 'docker push techcuriosity/jenkinstest:$BUILD_NUMBER'
         }
     }
