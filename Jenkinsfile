@@ -14,7 +14,7 @@ stages {
     }
     stage('Docker Publish') {
         steps {
-            withDockerRegistry([credentialsId: "", url: ""])
+            withDockerRegistry([credentialsId: "docker-hub-cred", url: ""])
             sh 'docker push techcuriosity/jenkinstest:$BUILD_NUMBER'
         }
     }
