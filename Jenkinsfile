@@ -18,10 +18,5 @@ stages {
             sh 'docker push techcuriosity/jenkinstest:$BUILD_NUMBER'
         }
     }
-}
-    post {
-        always {
-            sh 'docker logout'
-        }
-    }
+  }
 }
