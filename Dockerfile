@@ -12,7 +12,7 @@ COPY requirements.txt .
 RUN pip install -r ./requirements.txt
 
 # copy the content (python file) to the working DIR in the container
-COPY flaskappdemo.py .
+COPY app.py .
 
 # command to run on container when it starts
 CMD ["python", "./app.py"]
