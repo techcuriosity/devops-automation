@@ -1,11 +1,18 @@
-FROM python:3.8-slim-buster
+# set the base image (host OS) - Its downloads the image from docker hub
+FROM python:3.10
 
-WORKDIR /app
+# set the working DIR in the container
+WORKDIR /code
 
-COPY requirements.txt requirements.txt
+# copy the dependancies to the working DIR in the container
+# The "requirements.txt" will contain all the dependancies
+COPY requirements.txt .
 
-RUN pip3 install -r requirements.txt
+# install dependencies
+RUN pip install -r ./requirements.txt
 
-COPY . .
+# copy the content (python file) to the working DIR in the container
+COPY flaskappdemo.py .
 
-CMD ["python3", "-m", "flask", "run", "--host=0.0.0.0"]
+# command to run on container when it starts
+CMD ["python", "./flaskappdemo.py"]
