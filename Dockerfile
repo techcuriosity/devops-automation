@@ -1,5 +1,5 @@
 # set the base image (host OS) - Its downloads the image from docker hub
-FROM python:3.10
+FROM python:3.9
 
 # set the working DIR in the container
 WORKDIR /code
